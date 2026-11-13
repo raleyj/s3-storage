@@ -10,7 +10,7 @@
   "dataGiB": 500,
   "credentialPolicy": "No embedded passwords, S3 credentials, TLS private keys, client CA or backup data. Fresh identities and secrets on first boot.",
   "imageBuild": "Never booted; offline customization of original baseline disk",
-  "validation": "OVF Tool, vCenter import-spec, and local DHCP/static first-boot, reboot, S3 and mount-guard qualification passed; exact-OVA vCenter runtime and DSM restore pending",
+  "validation": "OVF Tool, vCenter import-spec, local DHCP/static first boot and reboot, exact-OVA vCenter guest runtime, signed S3 and mount-guard qualification, and DSM 9.1.1 system recovery passed",
   "checks": [
     "OVF Tool verification and OVA checksum",
     "vCenter read-only import spec: 19 deployment properties and two disks",
@@ -20,7 +20,9 @@
     "SSH password and key modes",
     "nftables CVE-2026-98432 mitigation active",
     "Persisted objects, credentials and TLS keys after reboot",
-    "Missing data mount blocks startup and fallback writes"
+    "Missing data mount blocks startup and fallback writes",
+    "Exact published OVA vCenter guest first boot and reboot with signed S3 CRUD, multipart, bucket isolation, and persisted identity/TLS",
+    "DSM 9.1.1 system restore from backup copied to a disposable clean 1.0.2 OVA S3 target"
   ],
   "securityReview": {
     "osScan": "evidence/vulnerability-summary-1.0.2.json",
@@ -30,9 +32,8 @@
   "limits": [
     "No fixed Ubuntu 24.04 kernel for CVE-2026-98432 as of 2026-11-09",
     "Five Go binary advisories remain; S3 exploitability unconfirmed",
-    "Exact-OVA vCenter import completed; guest runtime validation and shutdown pending after vCenter TLS connection failures",
-    "DSM system and PostgreSQL recovery not validated",
-    "The running JTEC S3 appliance has an independently stored encrypted recovery copy and passed an isolated restore; that test was separate from this clean OVA"
+    "The running JTEC S3 appliance has an independently stored encrypted recovery copy and passed an isolated restore; that test was separate from this clean OVA",
+    "Managed PostgreSQL recovery against the clean 1.0.2 OVA was not tested; the running JTEC deployment passed a separate PostgreSQL restore/PITR drill"
   ]
 }
 
