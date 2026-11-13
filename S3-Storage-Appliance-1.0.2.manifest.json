@@ -1,0 +1,38 @@
+{
+  "artifact": "S3-Storage-Appliance-1.0.2.ova",
+  "sha256": "e06ec6989ace7ab78cebcb672602874c1aa240da1da7763dc151b6be2fa15c31",
+  "bytes": 858152960,
+  "baseline": "Ubuntu Server 24.04 Baseline 1.5",
+  "seaweedfs": "4.53",
+  "cpu": 4,
+  "memoryGiB": 8,
+  "osGiB": 60,
+  "dataGiB": 500,
+  "credentialPolicy": "No embedded passwords, S3 credentials, TLS private keys, client CA or backup data. Fresh identities and secrets on first boot.",
+  "imageBuild": "Never booted; offline customization of original baseline disk",
+  "validation": "OVF Tool, vCenter import-spec, and local DHCP/static first-boot, reboot, S3 and mount-guard qualification passed; exact-OVA vCenter runtime and DSM restore pending",
+  "checks": [
+    "OVF Tool verification and OVA checksum",
+    "vCenter read-only import spec: 19 deployment properties and two disks",
+    "Fresh DHCP and static imports",
+    "Signed HTTPS CRUD and multipart readback on both buckets",
+    "Cross-bucket access denied",
+    "SSH password and key modes",
+    "nftables CVE-2026-98432 mitigation active",
+    "Persisted objects, credentials and TLS keys after reboot",
+    "Missing data mount blocks startup and fallback writes"
+  ],
+  "securityReview": {
+    "osScan": "evidence/vulnerability-summary-1.0.2.json",
+    "seaweedfsBinaryScan": "evidence/seaweedfs-vulnerability-summary-4.53.json",
+    "kernel": "CVE-2026-98432 mitigated, not fixed in Ubuntu 24.04 kernel 6.8.0-149"
+  },
+  "limits": [
+    "No fixed Ubuntu 24.04 kernel for CVE-2026-98432 as of 2026-11-09",
+    "Five Go binary advisories remain; S3 exploitability unconfirmed",
+    "Exact-OVA vCenter import completed; guest runtime validation and shutdown pending after vCenter TLS connection failures",
+    "DSM system and PostgreSQL recovery not validated",
+    "The running JTEC S3 appliance has an independently stored encrypted recovery copy and passed an isolated restore; that test was separate from this clean OVA"
+  ]
+}
+
