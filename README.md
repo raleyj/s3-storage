@@ -16,4 +16,4 @@ See [the 1.0.2 deployment guide](Deployment-Guide-1.0.2.md), [manifest](S3-Stora
 
 This is a single-VM lab appliance without object-level redundancy. Keep an independent recovery copy. No deployment passwords, S3 credentials, TLS private keys, or backup data are embedded in the OVA.
 
-The JTEC lab runs a separate 15-minute signed S3 and DSM backup/WAL age monitor on a workstation. Notification delivery still requires a configured destination; new deployments need their own external monitoring.
+The JTEC lab runs a separate 15-minute signed S3 and DSM backup/WAL age monitor on a workstation. It delivers alerts to a dedicated Mattermost S3 Alerts channel while the Windows user is logged in; new deployments need their own external monitoring.
