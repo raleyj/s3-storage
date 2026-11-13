@@ -1,0 +1,16 @@
+{
+  "artifact": "S3-Storage-Appliance-1.0.3.ova",
+  "sha256": "a468442d253347a5646a2990081d2a09622c8363959d8d955d12febaf8f907af",
+  "bytes": 1075681280,
+  "baseline": "Ubuntu Server 24.04 Baseline 1.5",
+  "seaweedfs": "4.53",
+  "cpu": 4,
+  "memoryGiB": 8,
+  "osGiB": 60,
+  "dataGiB": 500,
+  "credentialPolicy": "No embedded passwords, S3 credentials, TLS private keys, client CA or backup data. Fresh identities and secrets on first boot.",
+  "imageBuild": "Never booted; offline customization of original baseline disk",
+  "validation": "Passed exact-OVA vCenter offline first boot, reboot, signed S3 CRUD/multipart/bucket isolation, persistence, clean-image audit and OS vulnerability rescan; DSM restore not repeated for 1.0.3",
+  "evidence": "evidence/release-qualification-1.0.3-20261113.md"
+}
+
