@@ -27,13 +27,13 @@
   "securityReview": {
     "osScan": "evidence/vulnerability-summary-1.0.2.json",
     "seaweedfsBinaryScan": "evidence/seaweedfs-vulnerability-summary-4.53.json",
-    "kernel": "CVE-2026-98432 mitigated, not fixed in Ubuntu 24.04 kernel 6.8.0-149"
+    "kernel": "CVE-2026-98432 fixed in installed Ubuntu linux-image-6.8.0-149-generic package 6.8.0-149.149; nftables rule retained as defense in depth"
   },
   "limits": [
-    "No fixed Ubuntu 24.04 kernel for CVE-2026-98432 as of 2026-11-09",
-    "Five Go binary advisories remain; S3 exploitability unconfirmed",
     "The running JTEC S3 appliance has an independently stored encrypted recovery copy and passed an isolated restore; that test was separate from this clean OVA",
-    "Managed PostgreSQL recovery against the clean 1.0.2 OVA was not tested; the running JTEC deployment passed a separate PostgreSQL restore/PITR drill"
+    "Managed PostgreSQL recovery against the clean 1.0.2 OVA was not tested; the running JTEC deployment passed a separate PostgreSQL restore/PITR drill",
+    "Six Go binary advisories remain in official SeaweedFS 4.53; S3 exploitability unconfirmed",
+    "Updated Trivy scan identifies fixed glibc, Perl and pyasn1 versions not yet offered by configured Ubuntu repositories on 2026-11-13"
   ]
 }
 
