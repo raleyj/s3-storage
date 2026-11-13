@@ -55,7 +55,7 @@ sudo journalctl -u seaweedfs-s3 --no-pager
 sudo ufw status verbose
 ```
 
-The health timer runs every fifteen minutes and checks the mount, services, free space, TLS expiry and anonymous-access denial. It writes local journal results. The JTEC lab runs a separate workstation check of signed S3 access and DSM backup/WAL age every fifteen minutes; notification delivery requires a configured destination. New OVA deployments need their own external monitoring setup.
+The health timer runs every fifteen minutes and checks the mount, services, free space, TLS expiry and anonymous-access denial. It writes local journal results. The JTEC lab runs a separate workstation check of signed S3 access and DSM backup/WAL age every fifteen minutes and delivers alerts to a dedicated Mattermost S3 Alerts channel. The task runs while the Windows user is logged in. New OVA deployments need their own external monitoring setup.
 
 For a consistent recovery copy, stop NGINX and all four SeaweedFS services, copy the entire `/srv/s3` filesystem plus configuration, TLS material and credentials to independent storage, then restart and verify signed object reads. Protect the copied secrets. Volume files alone are insufficient. The OVA is a clean deployment template, not a backup of any deployed appliance.
 
